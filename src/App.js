@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Type1 from "./Type1";
+import Type2 from "./Type2";
+import "./App.css";
 
-function App() {
+const showComponent = () => ({
+  1: <Type1 />,
+  2: <Type2 />
+});
+
+const App = () => {
+  const [value, setValue] = useState(1);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => setValue(1)}>Type 1</button>
+      <button onClick={() => setValue(2)}>Type 2</button>
+      {showComponent()[value]}
     </div>
   );
-}
+};
 
 export default App;
